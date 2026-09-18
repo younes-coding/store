@@ -28,7 +28,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/settings');
+        const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        const res = await fetch(`${API_BASE}/settings`);
         if (res.ok) {
           const json = await res.json();
           if (json.success && json.data?.homepage) {
