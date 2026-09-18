@@ -23,7 +23,14 @@ export const HomePage: React.FC<HomePageProps> = ({
   const { products, categories: dynamicCategories } = useProducts();
   const { formatPrice } = useCurrency();
 
-  const [homepageSettings, setHomepageSettings] = useState<any>(null);
+  const [homepageSettings, setHomepageSettings] = useState<any>(() => {
+    try {
+      const cached = localStorage.getItem('younes_homepage_settings');
+      return cached ? JSON.parse(cached) : null;
+    } catch {
+      return null;
+    }
+  });
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -34,6 +41,9 @@ export const HomePage: React.FC<HomePageProps> = ({
           const json = await res.json();
           if (json.success && json.data?.homepage) {
             setHomepageSettings(json.data.homepage);
+            try {
+              localStorage.setItem('younes_homepage_settings', JSON.stringify(json.data.homepage));
+            } catch (e) {}
           }
         }
       } catch (err) {
@@ -59,14 +69,14 @@ export const HomePage: React.FC<HomePageProps> = ({
   const secondaryPieceWithImage = localizedProducts.filter(p => p.id !== heroRunwayPiece.id).find(p => p.images && p.images.length > 0);
   const heroNewArrivalPiece = secondaryPieceWithImage || localizedProducts[1] || localizedProducts[0] || heroRunwayPiece;
 
-  // Live overrides from Admin Dashboard
-  const heroImageSrc = homepageSettings?.heroImage || (heroRunwayPiece.images && heroRunwayPiece.images[0]);
+  // Live overrides from Admin Dashboard with zero-flicker caching
+  const heroImageSrc = homepageSettings?.heroImage || '/products/old-money-outfit-1.jpg';
   const heroSeasonTagText = homepageSettings?.heroSeasonTag || t('heroSeasonTag');
   const heroTitleLine1Text = homepageSettings?.heroTitleLine1 || t('heroTitleLine1');
   const heroTitleLine2Text = homepageSettings?.heroTitleLine2 || t('heroTitleLine2');
   const heroDescText = homepageSettings?.heroDescription || t('heroDescription');
 
-  const floatingImg = homepageSettings?.heroFloatingImage || (heroNewArrivalPiece.images && heroNewArrivalPiece.images[0]);
+  const floatingImg = homepageSettings?.heroFloatingImage || '/products/shirt-slate-blue-knit-long.jpg';
   const floatingTitle = homepageSettings?.heroFloatingTitle || t('heroNewArrival');
   const floatingSubtitle = homepageSettings?.heroFloatingSubtitle || heroNewArrivalPiece.name;
   
@@ -83,7 +93,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   };
   const floatingPriceDisplay = formatFloatingPrice();
 
-  const heritageImg = homepageSettings?.heritageBannerImage || (secondaryPieceWithImage && secondaryPieceWithImage.images && secondaryPieceWithImage.images[0]);
+  const heritageImg = homepageSettings?.heritageBannerImage || '/products/old-money-outfit-2.jpg';
   const heritageTag = homepageSettings?.heritageBannerTag || 'الفخامة الكلاسيكية والأصالة';
   const heritageTitle = homepageSettings?.heritageBannerTitle || 'فخامة هادئة تُعبر عنك:';
   const heritageSubtitle = homepageSettings?.heritageBannerSubtitle || 'أناقة كلاسيكية لا تنتهي بمرور الزمن';
