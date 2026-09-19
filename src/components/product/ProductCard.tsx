@@ -109,8 +109,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
         </motion.button>
 
-        {/* Quick View Button */}
-        <div className="absolute inset-x-4 bottom-14 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 hidden sm:flex justify-center">
+        {/* Quick View Button (Desktop only) */}
+        <div className="absolute inset-x-4 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 hidden sm:flex justify-center">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -121,52 +121,47 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <Eye className="w-3.5 h-3.5 text-accent" /> {t('quickView')}
           </button>
         </div>
-
-        {/* Quick Add To Cart Button */}
-        <div className="absolute inset-x-4 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <button
-            onClick={handleQuickAdd}
-            className="w-full py-3 bg-dark text-white hover:bg-neutral-800 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-luxury transition-all cursor-pointer"
-          >
-            <ShoppingBag className="w-3.5 h-3.5 text-accent" />
-            <span>{t('addToBag')}</span>
-          </button>
-        </div>
       </div>
 
       {/* Product Content Details */}
-      <div className="p-4 flex flex-col flex-1 justify-between bg-white text-right">
+      <div className="p-3.5 sm:p-4 flex flex-col flex-1 justify-between bg-white text-right">
         <div>
-          <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-neutral-500 mb-1">
             <span className="font-bold text-accent">{product.categoryLabel}</span>
-            <div className="flex items-center gap-1 text-amber-600 font-bold">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            <div className="flex items-center gap-1 text-amber-600 font-bold text-[11px]">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
               <span>{product.rating}</span>
               <span className="text-neutral-400 font-normal">({product.reviewCount})</span>
             </div>
           </div>
 
-          <h3 className="font-serif text-lg font-bold text-dark line-clamp-1 group-hover:text-accent transition-colors">
+          <h3 className="font-serif text-base sm:text-lg font-bold text-dark line-clamp-1 group-hover:text-accent transition-colors">
             {product.name}
           </h3>
-          <p className="text-xs text-neutral-500 line-clamp-1 mt-0.5">{product.subtitle}</p>
+          <p className="text-[11px] sm:text-xs text-neutral-500 line-clamp-1 mt-0.5">{product.subtitle}</p>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-brand-100 flex items-center justify-between">
+        <div className="mt-3 pt-3 border-t border-brand-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           {/* Price */}
           <div className="flex items-baseline gap-2">
-            <span className="font-bold text-sm text-dark font-serif">{formatPrice(product.price)}</span>
+            <span className="font-bold text-sm sm:text-base text-dark font-serif">{formatPrice(product.price)}</span>
             {product.originalPrice && (
-              <span className="text-[11px] text-neutral-400 line-through font-serif">
+              <span className="text-[10px] sm:text-[11px] text-neutral-400 line-through font-serif">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
           </div>
 
-          {/* Color Name Badge */}
-          <div className="text-[11px] text-neutral-600 font-bold bg-brand-50 px-2 py-0.5 rounded-md border border-brand-200 truncate max-w-[120px]" title={selectedColor.nameAr || selectedColor.name}>
-            {selectedColor.nameAr || selectedColor.name}
-          </div>
+          {/* Action Button: Visible and touch-friendly on all devices */}
+          <motion.button
+            whileTap={{ scale: 0.94 }}
+            onClick={handleQuickAdd}
+            className="w-full sm:w-auto py-2 px-3 sm:px-3.5 bg-dark hover:bg-neutral-800 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer shrink-0"
+            title="إضافة سريعة للحقيبة"
+          >
+            <ShoppingBag className="w-3.5 h-3.5 text-accent" />
+            <span>{t('addToBag')}</span>
+          </motion.button>
         </div>
       </div>
     </motion.div>

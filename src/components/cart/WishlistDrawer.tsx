@@ -58,14 +58,14 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
             className="absolute inset-0 bg-dark/60 backdrop-blur-sm"
           />
 
-          <div className="fixed inset-y-0 left-0 max-w-full flex pr-10">
+          <div className="fixed inset-y-0 left-0 max-w-full flex pr-0 sm:pr-10">
             {/* Side Drawer Box */}
             <motion.div
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="w-screen max-w-md bg-brand-50 shadow-2xl flex flex-col justify-between border-r border-brand-200 text-right"
+              className="w-screen max-w-full sm:max-w-md bg-brand-50 shadow-2xl flex flex-col justify-between border-r border-brand-200 text-right"
             >
               {/* Header */}
               <div className="p-6 border-b border-brand-200 flex items-center justify-between bg-white">
