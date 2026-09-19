@@ -113,7 +113,7 @@ export const StorefrontPage: React.FC = () => {
         </div>
 
         <a
-          href="http://localhost:5175"
+          href="https://younes-sartorial.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2.5 bg-brand-100 hover:bg-brand-200 text-dark rounded-xl text-xs font-bold flex items-center gap-2 transition-colors border border-brand-200 shadow-sm self-start sm:self-auto cursor-pointer"
