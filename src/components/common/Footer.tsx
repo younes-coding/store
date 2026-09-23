@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { MapPin, ArrowRight, MessageCircle, Truck, RotateCcw, ShieldCheck, PhoneCall } from 'lucide-react';
-import { useToast } from '../../context/ToastContext';
-import { useLanguage } from '../../context/LanguageContext';
+import React from 'react';
+import { MapPin, MessageCircle, Truck, RotateCcw, ShieldCheck, PhoneCall } from 'lucide-react';
 import { type ViewMode } from './Navbar';
 
 interface FooterProps {
@@ -10,17 +8,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPolicy }) => {
-  const [email, setEmail] = useState('');
-  const { showToast } = useToast();
-  const { t } = useLanguage();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    showToast(t('joinButton'), 'شكراً لانضمامك إلى مجتمع يونس سارتوريال للأناقة الراقية.', 'success');
-    setEmail('');
-  };
-
   const handleWhatsAppChat = () => {
     const msg = encodeURIComponent('مرحباً يونس سارتوريال، أود الاستفسار عن التشكيلات الفاخرة.');
     window.open(`https://wa.me/213657533005?text=${msg}`, '_blank');
@@ -153,36 +140,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPolicy }) => {
             </ul>
           </div>
 
-          {/* Newsletter Subscription */}
+          {/* Direct Concierge Contact */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="text-xs font-bold text-white tracking-wider uppercase pb-2 border-b border-neutral-800">
-              النشرة البريدية الحصرية
+              خدمة الكونسيرج والتواصل المباشر
             </h4>
-            <p className="text-xs text-neutral-400">
-              اشترك لتصلك عروض التشكيلات الموسمية الحصرية والأطقم الملكية المحدودة.
+            <p className="text-xs text-neutral-400 leading-relaxed font-light">
+              فريق خدمة العملاء متواجد لمساعدتكم في اختيار المقاسات الملائمة، وتأكيد الطلبات، وتقديم استشارات الأناقة الشخصية.
             </p>
-            <form onSubmit={handleSubscribe} className="flex">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="أدخل بريدك الإلكتروني..."
-                required
-                className="bg-neutral-900 border border-neutral-700 rounded-r-xl px-4 py-3 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-accent flex-1 text-right"
-              />
-              <button
-                type="submit"
-                className="bg-accent hover:bg-accent-hover text-dark font-bold px-5 py-3 rounded-l-xl transition-colors flex items-center gap-1.5 text-xs cursor-pointer shrink-0"
-              >
-                <span>انضمام</span>
-                <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-              </button>
-            </form>
 
             {/* Direct WhatsApp Concierge Button */}
             <button
               onClick={handleWhatsAppChat}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
+              className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
             >
               <MessageCircle className="w-4 h-4" />
               <span>محادثة فورية مع خدمة العملاء عبر WhatsApp</span>
