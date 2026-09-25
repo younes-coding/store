@@ -45,7 +45,9 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToTab }) =
   }, []);
 
   const totalRev = useMemo(() => {
-    return liveOrders.reduce((sum: number, o: any) => sum + (o.totalAmount || 0), 0);
+    return liveOrders
+      .filter((o: any) => o.status !== 'Cancelled' && o.status !== 'cancelled')
+      .reduce((sum: number, o: any) => sum + (o.totalAmount || 0), 0);
   }, [liveOrders]);
 
   const pendingCount = useMemo(() => {
