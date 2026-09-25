@@ -412,9 +412,9 @@ export const ProductsPage: React.FC = () => {
                       {p.categoryLabel || p.category}
                     </td>
                     <td className="py-3 px-4 whitespace-nowrap">
-                      <span className="font-bold text-dark">{Number(p.price || 0).toLocaleString('ar-DZ')} د.ج</span>
+                      <span className="font-bold text-dark">{Number(p.price || 0)} د.ج</span>
                       {p.originalPrice && (
-                        <span className="text-[11px] text-neutral-400 line-through mr-1.5">{Number(p.originalPrice).toLocaleString('ar-DZ')} د.ج</span>
+                        <span className="text-[11px] text-neutral-400 line-through mr-1.5">{Number(p.originalPrice)} د.ج</span>
                       )}
                     </td>
                     <td className="py-3 px-4 whitespace-nowrap">

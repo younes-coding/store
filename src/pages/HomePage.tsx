@@ -85,9 +85,9 @@ export const HomePage: React.FC<HomePageProps> = ({
     if (homepageSettings?.heroFloatingPrice !== undefined && homepageSettings?.heroFloatingPrice !== null && homepageSettings?.heroFloatingPrice !== '') {
       const numericVal = parseFloat(String(homepageSettings.heroFloatingPrice).replace(/[^0-9.]/g, ''));
       if (!isNaN(numericVal)) {
-        return `${numericVal.toLocaleString('ar-DZ')} د.ج`;
+        return formatPrice(numericVal);
       }
-      return String(homepageSettings.heroFloatingPrice);
+      return String(homepageSettings.heroFloatingPrice).replace(/\./g, '');
     }
     return formatPrice(heroNewArrivalPiece.price);
   };

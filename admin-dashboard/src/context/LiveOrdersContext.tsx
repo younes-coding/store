@@ -79,7 +79,7 @@ export const LiveOrdersProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             const latest = newOrders[0];
             showToast(
               '🔔 طلب جديد وارد للمتجر!',
-              `طلب رقم #${latest.orderId} من العميل (${latest.customer?.fullName || 'زبون جديد'}) بمبلغ ${Number(latest.totalAmount || 0).toLocaleString('ar-DZ')} د.ج`,
+              `طلب رقم #${latest.orderId} من العميل (${latest.customer?.fullName || 'زبون جديد'}) بمبلغ ${Number(latest.totalAmount || 0)} د.ج`,
               'order',
               0 // Stays until user clicks (X)
             );

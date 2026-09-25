@@ -39,7 +39,7 @@ export const CountUp: React.FC<CountUpProps> = ({
   return (
     <span>
       {prefix}
-      {displayValue.toLocaleString()}
+      {displayValue}
       {suffix}
     </span>
   );

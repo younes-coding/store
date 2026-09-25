@@ -338,7 +338,7 @@
       "isNewItem": true,
       "isBestSeller": true,
       "isSale": false,
-      "stockCount": 19,
+      "stockCount": 15,
       "createdAt": "2026-09-14T00:00:00.000Z",
       "updatedAt": "2026-09-14T00:00:00.000Z"
     },
@@ -1124,10 +1124,127 @@
   ],
   "orders": [
     {
+      "_id": "ord-1790348423196",
+      "orderId": "23",
+      "customer": {
+        "fullName": "Younes Bounoua",
+        "phone": "0657533005",
+        "wilaya": "13 - تلمسان (Tlemcen)",
+        "city": "Tlemcen",
+        "address": "telmcen",
+        "notes": ""
+      },
+      "items": [
+        {
+          "product": {
+            "id": "ys-shirt-05",
+            "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+            "images": [
+              "/products/shirt-white-zip-ribbed-polo.jpg"
+            ]
+          },
+          "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+          "price": 5900,
+          "selectedColor": {
+            "name": "أبيض ناصع",
+            "nameAr": "أبيض ناصع"
+          },
+          "selectedSize": "M",
+          "quantity": 2,
+          "image": "/products/shirt-white-zip-ribbed-polo.jpg"
+        }
+      ],
+      "subtotal": 11800,
+      "discount": 0,
+      "shippingCost": 600,
+      "totalAmount": 12400,
+      "status": "Shipped",
+      "createdAt": "2026-09-25T15:00:23.197Z",
+      "updatedAt": "2026-09-25T15:01:56.206Z"
+    },
+    {
+      "_id": "ord-1790347944801",
+      "orderId": "22",
+      "customer": {
+        "fullName": "Younes Bounoua",
+        "phone": "0657533005",
+        "wilaya": "13 - تلمسان (Tlemcen)",
+        "city": "Tlemcen",
+        "address": "telmcen",
+        "notes": ""
+      },
+      "items": [
+        {
+          "product": {
+            "id": "ys-shirt-05",
+            "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+            "images": [
+              "/products/shirt-white-zip-ribbed-polo.jpg"
+            ]
+          },
+          "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+          "price": 5900,
+          "selectedColor": {
+            "name": "أبيض ناصع",
+            "nameAr": "أبيض ناصع"
+          },
+          "selectedSize": "M",
+          "quantity": 1,
+          "image": "/products/shirt-white-zip-ribbed-polo.jpg"
+        }
+      ],
+      "subtotal": 5900,
+      "discount": 0,
+      "shippingCost": 600,
+      "totalAmount": 6500,
+      "status": "Shipped",
+      "createdAt": "2026-09-25T14:52:24.801Z",
+      "updatedAt": "2026-09-25T14:53:55.654Z"
+    },
+    {
+      "_id": "ord-1790347243309",
+      "orderId": "21",
+      "customer": {
+        "fullName": "Younes Bounoua",
+        "phone": "0657533005",
+        "wilaya": "13 - تلمسان (Tlemcen)",
+        "city": "Tlemcen",
+        "address": "telmcen",
+        "notes": ""
+      },
+      "items": [
+        {
+          "product": {
+            "id": "ys-shirt-05",
+            "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+            "images": [
+              "/products/shirt-white-zip-ribbed-polo.jpg"
+            ]
+          },
+          "name": "قميص بولو مضلع أبيض ناصع مع سحاب معدني فضي فاخر",
+          "price": 5900,
+          "selectedColor": {
+            "name": "أبيض ناصع",
+            "nameAr": "أبيض ناصع"
+          },
+          "selectedSize": "M",
+          "quantity": 1,
+          "image": "/products/shirt-white-zip-ribbed-polo.jpg"
+        }
+      ],
+      "subtotal": 5900,
+      "discount": 0,
+      "shippingCost": 600,
+      "totalAmount": 6500,
+      "status": "Shipped",
+      "createdAt": "2026-09-25T14:40:43.309Z",
+      "updatedAt": "2026-09-25T14:42:11.356Z"
+    },
+    {
       "_id": "ord-1790346703201",
       "orderId": "20",
       "customer": {
-        "fullName": "Younes",
+        "fullName": "Younes Bounoua",
         "phone": "0657533005",
         "wilaya": "13 - تلمسان (Tlemcen)",
         "city": "Tlemcen",

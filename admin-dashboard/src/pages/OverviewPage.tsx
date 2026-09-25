@@ -235,7 +235,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToTab }) =
                     >
                       <td className="py-3 px-3 font-mono font-bold text-accent text-sm whitespace-nowrap" dir="ltr">{order.orderId}</td>
                       <td className="py-3 px-3 font-medium text-dark">{order.customer?.fullName}</td>
-                      <td className="py-3 px-3 font-bold text-dark">{Number(order.totalAmount || 0).toLocaleString('ar-DZ')} د.ج</td>
+                      <td className="py-3 px-3 font-bold text-dark">{Number(order.totalAmount || 0)} د.ج</td>
                       <td className="py-3 px-3">
                         <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors duration-200 ${order.status === 'Delivered' ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' :
                             order.status === 'Shipped' ? 'bg-blue-100 text-blue-800 border border-blue-300' :

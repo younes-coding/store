@@ -49,7 +49,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const formatPrice = (amountInDZD: number): string => {
     const val = convertPrice(amountInDZD);
-    return `${val.toLocaleString('ar-DZ')} د.ج`;
+    return `${val} د.ج`;
   };
 
   return (

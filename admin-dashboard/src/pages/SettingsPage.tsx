@@ -678,7 +678,7 @@ export const SettingsPage: React.FC = () => {
 
                       <div className="flex items-center justify-between gap-2 pt-1 border-t border-brand-100">
                         <span className="text-[10px] text-neutral-400">
-                          {wilaya.price === 0 ? 'توصيل مجاني' : `${Number(wilaya.price).toLocaleString('ar-DZ')} د.ج`}
+                          {wilaya.price === 0 ? 'توصيل مجاني' : `${Number(wilaya.price)} د.ج`}
                         </span>
 
                         <div className="w-28 shrink-0 flex items-center gap-1 bg-brand-50 px-2 py-1 rounded-lg border border-brand-200">

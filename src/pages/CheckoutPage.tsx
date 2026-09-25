@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShoppingBag, Lock, CheckCircle, Truck } from 'lucide-react';
+import { ArrowRight, ShoppingBag, CheckCircle, Truck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -324,11 +324,6 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigateToShop, on
             لا يلزم إنشاء حساب مسبق. أدخل بيانات التوصيل مباشرة لتأكيد طلبك وتجهيزه.
           </p>
         </div>
-
-        <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3.5 py-2 rounded-full border border-emerald-200">
-          <Lock className="w-4 h-4 text-emerald-600" />
-          <span>دفع آمن ومشفر 256-bit SSL</span>
-        </div>
       </div>
 
       {cart.length === 0 && !completedOrder ? (
@@ -432,7 +427,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigateToShop, on
                       {wilayaShippingCost === 0 ? (
                         <span className="text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full text-xs font-bold">توصيل مجاني</span>
                       ) : (
-                        <span className="text-dark font-serif text-sm">{Number(wilayaShippingCost).toLocaleString('ar-DZ')} د.ج</span>
+                        <span className="text-dark font-serif text-sm">{formatPrice(wilayaShippingCost)}</span>
                       )}
                     </span>
                   </div>
@@ -525,13 +520,13 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigateToShop, on
                 <div className="flex justify-between items-center">
                   <span>رسوم التوصيل ({formData.wilaya.split('(')[0].trim()})</span>
                   <span className={`font-semibold ${wilayaShippingCost === 0 ? 'text-emerald-700 font-bold' : 'text-dark font-serif'}`}>
-                    {wilayaShippingCost === 0 ? 'توصيل مجاني' : `${Number(wilayaShippingCost).toLocaleString('ar-DZ')} د.ج`}
+                    {wilayaShippingCost === 0 ? 'توصيل مجاني' : formatPrice(wilayaShippingCost)}
                   </span>
                 </div>
 
                 <div className="flex justify-between text-base font-bold text-dark pt-3 border-t border-brand-200">
                   <span>المبلغ الإجمالي المستحق</span>
-                  <span className="text-xl text-dark font-serif">{Number(orderGrandTotal).toLocaleString('ar-DZ')} د.ج</span>
+                  <span className="text-xl text-dark font-serif">{formatPrice(orderGrandTotal)}</span>
                 </div>
               </div>
 
@@ -550,7 +545,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigateToShop, on
                 ) : (
                   <>
                     <CheckCircle className="w-4 h-4 text-accent" />
-                    <span>تأكيد وإرسال الطلب ({Number(orderGrandTotal).toLocaleString('ar-DZ')} د.ج)</span>
+                    <span>تأكيد وإرسال الطلب ({formatPrice(orderGrandTotal)})</span>
                   </>
                 )}
               </motion.button>

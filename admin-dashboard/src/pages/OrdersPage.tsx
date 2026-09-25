@@ -170,7 +170,7 @@ export const OrdersPage: React.FC = () => {
                     <td className="py-3 px-4 font-semibold text-neutral-600">
                       {order.items?.length || 0} قطع
                     </td>
-                    <td className="py-3 px-4 font-bold text-dark">{Number(order.totalAmount || 0).toLocaleString('ar-DZ')} د.ج</td>
+                    <td className="py-3 px-4 font-bold text-dark">{Number(order.totalAmount || 0)} د.ج</td>
                     <td className="py-3 px-4">
                       <select
                         value={order.status}
@@ -316,7 +316,7 @@ export const OrdersPage: React.FC = () => {
                             </p>
                           </div>
                         </div>
-                        <span className="font-bold text-dark font-sans">{Number(((item.price || item.product?.price || 0) * (item.quantity || 1))).toLocaleString('ar-DZ')} د.ج</span>
+                        <span className="font-bold text-dark font-sans">{Number(((item.price || item.product?.price || 0) * (item.quantity || 1)))} د.ج</span>
                       </div>
                     );
                   })}
@@ -328,7 +328,7 @@ export const OrdersPage: React.FC = () => {
                 <span className="text-neutral-500">حالة الطلب: <strong className="text-dark font-bold">{t(`status${activeOrder.status}`) || activeOrder.status}</strong></span>
                 <div className="text-right">
                   <span className="text-neutral-500 block text-[11px]">المبلغ الإجمالي المدفوع:</span>
-                  <span className="text-xl font-bold text-dark font-sans">{Number(activeOrder.totalAmount || 0).toLocaleString('ar-DZ')} د.ج</span>
+                  <span className="text-xl font-bold text-dark font-sans">{Number(activeOrder.totalAmount || 0)} د.ج</span>
                 </div>
               </div>
             </motion.div>

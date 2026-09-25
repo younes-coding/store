@@ -158,9 +158,6 @@ export const OrderTrackingPage: React.FC<{
   };
 
   const renderPrice = (val: number) => {
-    if (val > 1000) {
-      return `${Math.round(val).toLocaleString('ar-DZ')} د.ج`;
-    }
     return formatPrice(val);
   };
 

@@ -300,7 +300,7 @@ export const StorefrontPage: React.FC = () => {
                             {homepage.heroFloatingSubtitle || 'اسم القطعة المعروضة'}
                           </h4>
                           <span className="text-xs font-bold text-dark block mt-0.5">
-                            {homepage.heroFloatingPrice ? `${parseFloat(String(homepage.heroFloatingPrice).replace(/[^0-9.]/g, '') || '0').toLocaleString('ar-DZ')} د.ج` : '6 200 د.ج'}
+                            {homepage.heroFloatingPrice ? `${parseFloat(String(homepage.heroFloatingPrice).replace(/[^0-9.]/g, '') || '0')} د.ج` : '6200 د.ج'}
                           </span>
                         </div>
                       </div>
