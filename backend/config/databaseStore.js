@@ -13,7 +13,7 @@ const getInitialDatabase = () => ({
       id: 'adm-001',
       email: 'bounouayounes@gmail.com',
       password: '$2a$10$//v7yR/GPhjz7Ofkm3hnKOgiowbrxeBaEZLUdHZmpM8AKJbIr5/7u', // younes13 (bcrypt hashed)
-      name: 'يونس بوعناني',
+      name: 'يونس',
       role: 'superadmin',
       createdAt: new Date().toISOString()
     }

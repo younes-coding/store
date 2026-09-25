@@ -19,9 +19,15 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('lumiere_admin_token'));
+  // Purge any persistent localStorage auth so closing tab/browser forces re-login
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('lumiere_admin_token');
+    localStorage.removeItem('lumiere_admin_user');
+  }
+
+  const [token, setToken] = useState<string | null>(() => sessionStorage.getItem('lumiere_admin_token'));
   const [admin, setAdmin] = useState<AdminUser | null>(() => {
-    const saved = localStorage.getItem('lumiere_admin_user');
+    const saved = sessionStorage.getItem('lumiere_admin_user');
     return saved ? JSON.parse(saved) : null;
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -61,13 +67,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = (newToken: string, newAdmin: AdminUser) => {
     setToken(newToken);
     setAdmin(newAdmin);
-    localStorage.setItem('lumiere_admin_token', newToken);
-    localStorage.setItem('lumiere_admin_user', JSON.stringify(newAdmin));
+    sessionStorage.setItem('lumiere_admin_token', newToken);
+    sessionStorage.setItem('lumiere_admin_user', JSON.stringify(newAdmin));
+    localStorage.removeItem('lumiere_admin_token');
+    localStorage.removeItem('lumiere_admin_user');
   };
 
   const logout = () => {
     setToken(null);
     setAdmin(null);
+    sessionStorage.removeItem('lumiere_admin_token');
+    sessionStorage.removeItem('lumiere_admin_user');
     localStorage.removeItem('lumiere_admin_token');
     localStorage.removeItem('lumiere_admin_user');
   };

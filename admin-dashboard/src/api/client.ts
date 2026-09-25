@@ -4,7 +4,7 @@ export async function apiRequest<T = any>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const token = localStorage.getItem('lumiere_admin_token');
+  const token = sessionStorage.getItem('lumiere_admin_token');
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -24,6 +24,8 @@ export async function apiRequest<T = any>(
 
   if (!response.ok) {
     if (response.status === 401) {
+      sessionStorage.removeItem('lumiere_admin_token');
+      sessionStorage.removeItem('lumiere_admin_user');
       localStorage.removeItem('lumiere_admin_token');
       localStorage.removeItem('lumiere_admin_user');
       window.dispatchEvent(new Event('auth:unauthorized'));
